@@ -4,7 +4,7 @@ const WhatsAppFeatures = require('./main/whatsAppFeatures');
 const fileUpload = require('express-fileupload');
 const handelReqValidation = require('./common/validators');
 const schemas = require('./common/schemas');
-// const serverless = require('serverless-http')
+const serverless = require('serverless-http')
 
 const app = express();
 app.use(cors());
@@ -236,9 +236,9 @@ app.listen(3000, () => {
 })
 
 //lambda handling
-// const handler = serverless(app)
+const handler = serverless(app)
 
-// exports.handler = async (event, context, callback) => {
-//     const response = handler(event, context, callback)
-//     return response
-// }
+exports.handler = async (event, context, callback) => {
+    const response = handler(event, context, callback)
+    return response
+}
